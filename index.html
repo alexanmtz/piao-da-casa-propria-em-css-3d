@@ -62,6 +62,19 @@
       from { transform: rotateY(0); }
       to   { transform: rotateY(-360deg); }
     }
+    
+    @-webkit-keyframes spin {
+    	0%   {-webkit-transform: rotateY(0deg)}
+    	100% {-webkit-transform: rotateY(-360deg)}
+	}
+	
+	.spinning{
+    	animation: spin 8s ease-in-out 1;
+	}
+	
+	.spinning-out {
+		animation: spin 10s ease-in 1;
+	}
 
     #wrapper {
       width: 400px;
@@ -595,16 +608,18 @@
     <div></div>
     <div></div>
   </div>
+  <script src="piao-drag.js" type="text/javascript"></script>
   <script type="text/javascript">
-
     // botão para parar e dar play na música de fundo
     (function(){
+    	
       document.querySelector('a#mute').addEventListener('click', function(event){
         event.preventDefault()
-
+        
         var audio = document.querySelector('audio')
+      	var piao = document.querySelector('div#piao')
+
         var muteButton = document.querySelector('#mute')
-        var piao = document.querySelector('div#piao')
 
         if ( audio.paused ) {
           audio.play()
